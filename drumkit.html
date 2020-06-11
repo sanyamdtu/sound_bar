@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            vertical-align: bottom;
+            margin-top: 200px;
+            padding: 5%;
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .boxes {
+            margin: 1%;
+            height: 70px;
+            width: 15%;
+            background-color: transparent;
+            font-size: xx-large;
+            border: solid black;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .sound {
+            font-size: large;
+            color: rgb(158, 158, 9);
+        }
+        
+        body {
+            background-image: url("https://images.unsplash.com/photo-1416304646406-414b1009dbe4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60");
+            background-repeat: no-repeat;
+            overflow: hidden;
+            background-size: cover;
+        }
+        
+        .selectedboxes {
+            margin: 1%;
+            height: 80px;
+            width: 20%;
+            background-color: transparent;
+            font-size: xx-large;
+            border: solid yellow;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align: center; margin-top: 10%;">
+        <h1>
+            Press any of the given key
+        </h1>
+
+    </div>
+    <div class="container">
+        <div class="boxes" id="a">
+            A
+            <div class="sound">
+                CLAP
+            </div>
+        </div>
+        <div class="boxes" id="s">S
+            <div class="sound">
+                CLAP
+            </div>
+        </div>
+        <div class="boxes" id="d">D
+            <div class="sound">
+                CLAP
+            </div>
+        </div>
+        <div class="boxes" id="f">F
+            <div class="sound">
+                CLAP
+            </div>
+        </div>
+        <div class="boxes" id="g">G
+            <div class="sound">
+                CLAP
+            </div>
+        </div>
+        <div class="boxes" id="h">H
+            <div class="sound">
+                CLAP
+            </div>
+        </div>
+        <div class="boxes" id="j">J
+            <div class="sound">
+                CLAP
+            </div>
+        </div>
+        <div class="boxes" id="k">K
+            <div class="sound">
+                CLAP
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const boxes = document.querySelectorAll(".boxes")
+    document.body.addEventListener("keypress", (event) => {
+        //the event is always passed as an argument in the addevent listner in the form
+        //of arguments
+        function sound(src) {
+            this.sound = document.createElement("audio")
+            this.sound.src = src;
+            this.sound.setAttribute("preload", "auto")
+            this.sound.play()
+        }
+        var x = event.keycode || event.which;
+        //console.log("the key is pressed")
+        for (let box of boxes) {
+            //console.log(box.id + x)
+            if ((box.id).charCodeAt() == x) {
+                //alert("muda muda muda")
+                // console.log(box.id + ".mp3")
+                box.classList.add("selectedboxes")
+                setTimeout(() => {
+                    box.classList.remove("selectedboxes")
+                }, 300);
+                sound(box.id + ".mp3")
+                break;
+            }
+        }
+
+    })
+</script>
+
+</html>
