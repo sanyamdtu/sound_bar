@@ -1,2 +1,2 @@
-# sound_bar
-sound_producing_web app
+# Sound Bar
+Sound Bar Web App
